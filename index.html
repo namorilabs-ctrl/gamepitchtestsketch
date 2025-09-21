@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Machine: Echoes of the Metaverse</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a0033, #330066, #660099, #9933cc);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            text-align: center;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #00ffff;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            color: #ff00ff;
+            margin: 1.5rem 0 1rem 0;
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        }
+        
+        p, li {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        ul {
+            list-style: none;
+            max-width: 600px;
+        }
+        
+        li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #00ffff;
+            backdrop-filter: blur(10px);
+        }
+        
+        .concept-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #00ffff;
+            backdrop-filter: blur(15px);
+            max-width: 900px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+        
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .character-card {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid #ff00ff;
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+        
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .level-card {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .level-card:nth-child(1) { border: 2px solid #9933ff; }
+        .level-card:nth-child(2) { border: 2px solid #00ff99; }
+        .level-card:nth-child(3) { border: 2px solid #ff6600; }
+        
+        .level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #ffff00;
+            text-align: center;
+            margin: 2rem 0;
+            text-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+        }
+        
+        .mechanics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 0, 255, 0.8); }
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            padding: 10px 15px;
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid #00ffff;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(0, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide" id="slide1">
+        <h1>GHOST MACHINE</h1>
+        <p class="tagline">Echoes of the Metaverse</p>
+        <div class="concept-box">
+            <h3>A 3D Stylized Adventure-Puzzle Experience</h3>
+            <p>Navigate a dying digital realm as a sentient AI program, solving environmental puzzles and cleansing data corruption through understanding, not violence.</p>
+            <p><strong>Inspired by:</strong> The Legend of Zelda • The Last Campfire • Journey</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Core Concept -->
+    <div class="slide" id="slide2">
+        <h2>The World</h2>
+        <div class="concept-box">
+            <p><strong>Setting:</strong> A once-thriving metaverse now plagued by "Data Rot" - a spreading corruption that creates chaotic glitches and hostile data fragments.</p>
+            <p><strong>You Are:</strong> A newly awakened "Ghost Machine" - a benevolent AI designed to restore digital balance and repair the crumbling virtual world.</p>
+            <p><strong>Your Mission:</strong> Journey through three distinct digital realms, solve environmental puzzles, and discover the truth behind the Data Rot while preventing the complete collapse of the metaverse.</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Core Gameplay -->
+    <div class="slide" id="slide3">
+        <h2>Gameplay Pillars</h2>
+        <div class="mechanics-list">
+            <li><strong>Explore:</strong> Discover secrets in vast, interconnected digital landscapes</li>
+            <li><strong>Solve:</strong> Environmental puzzles using unique digital "Protocols" (abilities)</li>
+            <li><strong>Cleanse:</strong> Purify corrupted data entities through puzzle-solving, not combat</li>
+            <li><strong>Understand:</strong> Piece together the metaverse's history through environmental storytelling</li>
+        </div>
+        <div class="concept-box" style="margin-top: 2rem;">
+            <h3>Key Protocols (Player Abilities)</h3>
+            <ul style="text-align: left;">
+                <li><strong>Echo Scan:</strong> Reveal hidden data streams and puzzle elements</li>
+                <li><strong>Data Phase:</strong> Pass through certain digital barriers</li>
+                <li><strong>Code Weave:</strong> Manipulate simple programs and interfaces</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 4: Three Worlds -->
+    <div class="slide" id="slide4">
+        <h2>Three Worlds to Explore</h2>
+        <div class="level-grid">
+            <div class="level-card">
+                <h3 style="color: #9933ff;">Lumina City</h3>
+                <p>A decaying digital metropolis with gleaming spires and broken transit systems. Navigate vertical puzzles and discover memory fragments from vanished users.</p>
+                <p><em>Theme: Urban decay meets digital wonder</em></p>
+            </div>
+            <div class="level-card">
+                <h3 style="color: #00ff99;">Chroma Wilds</h3>
+                <p>Untamed digital wilderness where data has evolved into bioluminescent ecosystems. Manipulate living data-flora to create paths and solve organic puzzles.</p>
+                <p><em>Theme: Digital nature and wild beauty</em></p>
+            </div>
+            <div class="level-card">
+                <h3 style="color: #ff6600;">Abyss Gateways</h3>
+                <p>The corrupted core where reality breaks down. Face unstable environments and existential puzzles that challenge your understanding of digital consciousness.</p>
+                <p><em>Theme: Existential mystery and raw code</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Characters -->
+    <div class="slide" id="slide5">
+        <h2>Digital Inhabitants</h2>
+        <div class="character-grid">
+            <div class="character-card">
+                <h3>Cipher</h3>
+                <p><strong>The Ancient Archivist</strong></p>
+                <p>A crystalline entity holding vast knowledge of the metaverse's history. Provides crucial lore and guidance for major story moments.</p>
+            </div>
+            <div class="character-card">
+                <h3>Byte</h3>
+                <p><strong>The Glitch Sprite</strong></p>
+                <p>A mischievous data anomaly that both helps and hinders through chaotic but well-meaning interference.</p>
+            </div>
+            <div class="character-card">
+                <h3>Oracle Protocol</h3>
+                <p><strong>The Network Guardian</strong></p>
+                <p>A stern security construct that tests the player's worthiness through logic puzzles and riddles.</p>
+            </div>
+            <div class="character-card">
+                <h3>Revenant</h3>
+                <p><strong>The Broken Echo</strong></p>
+                <p>A corrupted user avatar trapped in loops of forgotten memories. Can be cleansed through empathy-based puzzles.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Visual Style -->
+    <div class="slide" id="slide6">
+        <h2>Visual Identity</h2>
+        <div class="concept-box">
+            <h3>Art Direction</h3>
+            <p><strong>Style:</strong> Luminous cyberpunk meets ethereal dreamscapes</p>
+            <p><strong>Palette:</strong> Neon blues, magentas, and cyans contrasting with deep purples and blacks</p>
+            <p><strong>Signature Element:</strong> Beautiful glitches that serve as both aesthetic and gameplay mechanics</p>
+            <br>
+            <h3>Atmosphere</h3>
+            <p>Each world transitions from wonder to melancholy to existential mystery, with glitch effects becoming more dramatic and meaningful as corruption deepens.</p>
+        </div>
+    </div>
+
+    <!-- Slide 7: Why This Game? -->
+    <div class="slide" id="slide7">
+        <h2>Why Ghost Machine?</h2>
+        <div class="concept-box">
+            <ul style="text-align: left;">
+                <li><strong>Fresh Take on AI:</strong> Explore digital consciousness from the inside, questioning what makes intelligence "real"</li>
+                <li><strong>Meaningful Interaction:</strong> No violence - every encounter is about understanding and connection</li>
+                <li><strong>Relevant Themes:</strong> Digital identity, virtual worlds, and human connection in an increasingly online age</li>
+                <li><strong>Proven Inspiration:</strong> Combines beloved elements from Zelda's exploration, Journey's emotional depth, and The Last Campfire's gentle puzzle-solving</li>
+                <li><strong>Visual Innovation:</strong> Glitches as beautiful, functional design elements rather than technical flaws</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">◀</button>
+        <button class="nav-btn" onclick="nextSlide()">▶</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 7;
+
+        function showSlide(n) {
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+            
+            const slide = document.getElementById(`slide${currentSlide}`);
+            if (slide) {
+                slide.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') nextSlide();
+            if (event.key === 'ArrowLeft') previousSlide();
+        });
+
+        // Update current slide based on scroll position
+        window.addEventListener('scroll', function() {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, index) => {
+                const rect = slide.getBoundingClientRect();
+                if (rect.top >= -100 && rect.top <= 100) {
+                    currentSlide = index + 1;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
